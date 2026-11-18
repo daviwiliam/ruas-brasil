@@ -1,0 +1,37 @@
+/* Ajustes do Django Admin para a identidade do Ruas Brasil. */
+:root, html[data-theme="light"] {
+  --primary: #1f3d2b;
+  --secondary: #1f3d2b;
+  --header-bg: #1f3d2b;
+  --header-link-color: #fff;
+  --breadcrumbs-bg: #2c5a3f;
+  --link-fg: #1f5a37;
+  --link-hover-color: #0f2a1a;
+  --button-bg: #1f3d2b;
+  --button-hover-bg: #0f2a1a;
+  --default-button-bg: #1f3d2b;
+  --default-button-hover-bg: #0f2a1a;
+}
+#site-name a { font-weight: 800; letter-spacing: .08em; }
+#header { border-bottom: 4px solid #f2c230; }
+.rb-admin-sub { font-weight: 400; letter-spacing: 0; font-size: .8em; opacity: .9; margin-left: .5em; }
+.rb-acao-form { display: inline; margin: 0; }
+.rb-botao {
+  min-height: 44px; min-width: 44px; padding: 0 16px; border-radius: 15px;
+  border: 2px solid transparent; font-weight: 700; cursor: pointer; font-size: 13px;
+}
+.rb-botao--aprovar { background: #1f3d2b; color: #fff; }
+.rb-botao--rejeitar { background: #fff; color: #8a1c1c; border-color: #8a1c1c; }
+.rb-botao:disabled { opacity: .55; cursor: not-allowed; }
+.rb-botao:focus-visible, a:focus-visible, button:focus-visible, input:focus-visible,
+select:focus-visible, textarea:focus-visible { outline: 3px solid #f2c230; outline-offset: 2px; box-shadow: 0 0 0 5px #1a1a17; }
+.rb-status { font-weight: 700; white-space: nowrap; }
+.rb-status--pendente { color: #6b4e00; }
+.rb-status--aprovado { color: #1f5a37; }
+.rb-status--rejeitado { color: #8a1c1c; }
+.rb-previa { max-width: 100%; height: auto; border-radius: 4px; }
+.rb-aviso { background: #fff6d6; border-left: 4px solid #f2c230; padding: 8px 12px; color: #1a1a17; }
+html[data-theme="dark"] .rb-aviso { background: #3a3220; color: #f5f0e1; }
+html[data-theme="dark"] .rb-status--pendente { color: #f2c230; }
+html[data-theme="dark"] .rb-status--aprovado { color: #7fd19b; }
+html[data-theme="dark"] .rb-status--rejeitado { color: #ff9a9a; }
