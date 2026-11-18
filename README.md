@@ -283,4 +283,5 @@ segundo não foi medida.
   calculados no CSS. **Falta testar com leitor de tela e com pessoas usuárias.**
 - O LCP não foi medido; a validação com o parceiro não foi realizada.
 #   r u a s - b r a s i l  
+ #   r u a s - b r a s i l  
  
