@@ -21,6 +21,7 @@ def validar_link_http(valor: str) -> None:
         )
     if partes.username or partes.password:
         raise ValidationError("O link não pode conter usuário ou senha.", code="credenciais")
+    URLValidator(schemes=["http", "https"], message="Informe um endereço válido, como https://example.com.")(valor)
 
 
 def _sem_controle(valor: str) -> str:
@@ -29,7 +30,7 @@ def _sem_controle(valor: str) -> str:
 
 
 class LinkField(forms.URLField):
-    default_validators = [URLValidator(schemes=["http", "https"]), validar_link_http]
+    default_validators = [validar_link_http]
 
     def __init__(self, **kwargs):
         kwargs.setdefault("assume_scheme", "https")

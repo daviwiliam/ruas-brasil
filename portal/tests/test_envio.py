@@ -100,6 +100,12 @@ class EnvioInvalidoTests(MidiaTemporariaTestCase):
                 self.assertIn("link_obra", resposta.context["form"].errors)
         self.assertEqual(Material.objects.count(), 0)
 
+    def test_link_invalido_gera_uma_unica_mensagem(self):
+        resposta = self.enviar(link_obra="javascript:alert(1)")
+        self.assertEqual(len(resposta.context["form"].errors["link_obra"]), 1)
+        resposta = self.enviar(link_obra="https://")
+        self.assertEqual(len(resposta.context["form"].errors["link_obra"]), 1)
+
     def test_link_com_credenciais_e_invalido(self):
         resposta = self.enviar(link_canal="https://usuario:senha@example.com/")
         self.assertIn("link_canal", resposta.context["form"].errors)

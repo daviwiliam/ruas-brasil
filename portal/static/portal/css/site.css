@@ -168,7 +168,10 @@ legend { font-size: 1.3rem; font-weight: 800; color: var(--verde); padding-right
 
 .resumo-erros { border: 3px solid var(--erro); background: var(--branco); padding: 1rem 1.25rem; border-radius: var(--raio); margin-bottom: 2rem; }
 .resumo-erros h2 { color: var(--erro); font-size: 1.2rem; }
-.resumo-erros a { color: var(--erro); font-weight: 700; display: inline-block; min-height: 44px; padding-top: .5rem; }
+.resumo-erros li { margin-bottom: .25rem; }
+.resumo-erros a { color: var(--erro); font-weight: 700; display: block; min-height: 44px; padding-block: .6rem; }
+.materia__cabecalho .selo { padding: 0; }
+.materia__cabecalho .selo a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 .75rem; }
 
 .mensagens { margin-bottom: 1.5rem; }
 .mensagem { background: var(--branco); border-left: 5px solid var(--amarelo); padding: .75rem 1rem; margin: 0 0 .5rem; }
