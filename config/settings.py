@@ -167,6 +167,13 @@ if not DEBUG:
     SECURE_SSL_REDIRECT = env_bool("DJANGO_SECURE_SSL_REDIRECT", True)
     SECURE_HSTS_SECONDS = int(env("DJANGO_HSTS_SECONDS", "31536000"))
     SECURE_HSTS_INCLUDE_SUBDOMAINS = env_bool("DJANGO_HSTS_INCLUDE_SUBDOMAINS", False)
+    SECURE_HSTS_PRELOAD = env_bool("DJANGO_HSTS_PRELOAD", False)
+    # Subdomínios e preload afetam o domínio inteiro e são difíceis de reverter;
+    # só devem ser ativados por quem administra o domínio (ver README).
+    SILENCED_SYSTEM_CHECKS = [
+        c for c, ativo in [("security.W005", SECURE_HSTS_INCLUDE_SUBDOMAINS),
+                           ("security.W021", SECURE_HSTS_PRELOAD)] if not ativo
+    ]
     # O proxy HTTPS deve definir este cabeçalho (e removê-lo se vier do cliente).
     SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 

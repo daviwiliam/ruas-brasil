@@ -50,6 +50,8 @@ jobs:
       - name: Django check
         run: python manage.py check --fail-level WARNING
       - name: Django check de produção
+        env:
+          DJANGO_SECURE_SSL_REDIRECT: "True"
         run: python manage.py check --deploy --fail-level WARNING
       - name: Preparação de estáticos (collectstatic)
         run: python manage.py collectstatic --noinput
