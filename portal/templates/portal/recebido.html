@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block titulo %}Envio recebido{% endblock %}
+{% block conteudo %}
+<section class="confirmacao" aria-labelledby="confirmacao-titulo">
+  <div role="status">
+    <h1 id="confirmacao-titulo"><span aria-hidden="true">✓</span> Recebemos seu trabalho</h1>
+    <p class="protocolo">Protocolo: <strong>{{ material.protocolo }}</strong></p>
+  </div>
+  <p class="estado estado--pendente"><span aria-hidden="true">◷</span> Situação: <strong>Aguardando avaliação</strong></p>
+  <p>O recebimento <strong>não significa publicação</strong>. A equipe editorial vai revisar o material e pode editar a apresentação antes de publicar, ou decidir não publicar. Guarde o protocolo para falar com a equipe.</p>
+
+  <h2>Resumo do envio</h2>
+  <dl class="resumo">
+    <dt>Título</dt><dd>{{ material.titulo }}</dd>
+    <dt>Nome artístico</dt><dd>{{ material.artista.nome_artistico }}</dd>
+    <dt>Cidade</dt><dd>{{ material.artista.cidade }}/{{ material.artista.uf }}</dd>
+    <dt>Categoria</dt><dd>{{ material.categoria.nome }}</dd>
+    <dt>Enviado em</dt><dd>{{ material.enviado_em|date:"d/m/Y H:i" }}</dd>
+    {% if material.link_obra %}<dt>Link da obra</dt><dd>{{ material.link_obra }}</dd>{% endif %}
+    {% if material.link_canal %}<dt>Link do canal</dt><dd>{{ material.link_canal }}</dd>{% endif %}
+  </dl>
+  <p><a class="botao botao--secundario" href="{% url 'portal:inicio' %}">Voltar ao início</a></p>
+</section>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% load static %}<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block titulo %}Ruas Brasil{% endblock %} · Ruas Brasil</title>
+  <meta name="description" content="{% block descricao_meta %}Ruas Brasil: portal editorial de artistas independentes de Piraquara e região.{% endblock %}">
+  <link rel="stylesheet" href="{% static 'portal/css/site.css' %}">
+  {% block head_extra %}{% endblock %}
+</head>
+<body>
+  <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+  <header class="topo">
+    <div class="topo__faixa container">
+      <a class="marca" href="{% url 'portal:inicio' %}" aria-label="Ruas Brasil, página inicial">
+        <span class="marca__ruas">RUAS</span><span class="marca__brasil">BRASIL</span>
+      </a>
+      <form class="busca-topo" role="search" method="get" action="{% url 'portal:busca' %}">
+        <label for="busca-q" class="visualmente-oculto">Pesquisar por título ou artista</label>
+        <input id="busca-q" type="search" name="q" maxlength="100" placeholder="Título ou artista" value="{{ termo|default:'' }}">
+        <button type="submit" class="botao botao--secundario">Pesquisar</button>
+      </form>
+      <a class="botao botao--destaque" href="{% url 'portal:enviar' %}">Envie seu trabalho</a>
+    </div>
+    {% if categorias_menu %}
+    <nav class="categorias" aria-label="Categorias">
+      <ul class="categorias__lista container">
+        <li><a href="{% url 'portal:inicio' %}"{% if eh_inicio %} aria-current="page"{% endif %}>Todas</a></li>
+        {% for cat in categorias_menu %}
+        <li><a href="{{ cat.get_absolute_url }}"{% if categoria_atual and categoria_atual.pk == cat.pk %} aria-current="page"{% endif %}>{{ cat.nome }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+    {% endif %}
+  </header>
+
+  <main id="conteudo" tabindex="-1" class="container">
+    {% if messages %}
+    <div class="mensagens" role="status">
+      {% for m in messages %}<p class="mensagem"><span aria-hidden="true">ℹ</span> {{ m }}</p>{% endfor %}
+    </div>
+    {% endif %}
+    {% block conteudo %}{% endblock %}
+  </main>
+
+  <footer class="rodape">
+    <div class="container rodape__grade">
+      <p><strong>RUAS BRASIL</strong> reúne produções artísticas independentes de Piraquara e região, com curadoria editorial.</p>
+      <p>Iniciativa alinhada ao ODS 8 (meta 8.3): apoio à criatividade e ao empreendedorismo cultural. A divulgação não garante renda, venda ou contratação.</p>
+    </div>
+  </footer>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

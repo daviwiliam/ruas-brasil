@@ -1,0 +1,9 @@
+{% load portal_extras %}
+<div class="campo{% if campo.errors %} campo--erro{% endif %}">
+  <label for="{{ campo.id_for_label }}">{{ campo.label }}{% if campo.field.required %} <span class="obrigatorio">(obrigatório)</span>{% endif %}</label>
+  {% if campo.help_text %}<p class="campo__ajuda" id="{{ campo.auto_id }}-ajuda">{{ campo.help_text }}</p>{% endif %}
+  {% if campo.errors %}
+  <p class="campo__erro" id="{{ campo.auto_id }}-erro"><span aria-hidden="true">⚠</span> <span class="visualmente-oculto">Erro:</span> {{ campo.errors|join:" " }}</p>
+  {% endif %}
+  {% widget_acessivel campo %}
+</div>

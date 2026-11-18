@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block titulo %}Página não encontrada{% endblock %}
+{% block conteudo %}
+<section class="aviso-pagina">
+  <h1>Página não encontrada</h1>
+  <p>O endereço pode estar incorreto ou o conteúdo não está publicado.</p>
+  <p><a class="botao botao--primario" href="{% url 'portal:inicio' %}">Voltar ao início</a></p>
+</section>
+{% endblock %}

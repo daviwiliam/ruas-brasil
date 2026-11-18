@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block titulo %}{% if categoria_atual %}{{ categoria_atual.nome }}{% else %}Artistas independentes de Piraquara e região{% endif %}{% endblock %}
+{% block conteudo %}
+{% if eh_inicio and pagina.number == 1 %}
+<section class="chamada" aria-labelledby="chamada-titulo">
+  <h1 id="chamada-titulo">Arte que nasce na rua, no bairro, na cidade.</h1>
+  <p>Música, artes visuais, jogos, audiovisual, literatura e moda de artistas independentes de Piraquara e região, com curadoria editorial.</p>
+  <p><a class="botao botao--destaque" href="{% url 'portal:enviar' %}">Envie seu trabalho</a></p>
+</section>
+{% elif eh_inicio %}
+<h1 class="visualmente-oculto">Ruas Brasil: publicações</h1>
+{% endif %}
+
+<div class="grade-principal">
+  <section aria-labelledby="lista-titulo">
+    {% if categoria_atual %}
+      <h1>{{ categoria_atual.nome }}</h1>
+      <h2 id="lista-titulo" class="visualmente-oculto">Publicações em {{ categoria_atual.nome }}</h2>
+    {% else %}
+      <h2 id="lista-titulo">Publicações recentes</h2>
+    {% endif %}
+    {% if pagina.object_list %}
+      <div class="cards">
+        {% for material in pagina.object_list %}
+          {% include "portal/inc/card.html" with prioritaria=forloop.first %}
+        {% endfor %}
+      </div>
+      {% include "portal/inc/paginacao.html" %}
+    {% else %}
+      <p class="vazio">Ainda não há publicações {% if categoria_atual %}nesta categoria{% else %}no portal{% endif %}. Que tal <a href="{% url 'portal:enviar' %}">enviar o seu trabalho</a>?</p>
+    {% endif %}
+  </section>
+
+  {% if eh_inicio and ranking %}
+  <aside class="ranking" aria-labelledby="ranking-titulo">
+    <h2 id="ranking-titulo">Mais acessadas</h2>
+    <ol>
+      {% for item in ranking %}
+      <li><a href="{{ item.get_absolute_url }}">{{ item.titulo }}</a> <span class="ranking__artista">{{ item.artista.nome_artistico }}</span></li>
+      {% endfor %}
+    </ol>
+  </aside>
+  {% endif %}
+</div>
+{% endblock %}

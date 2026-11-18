@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block titulo %}{{ material.titulo }} — {{ material.artista.nome_artistico }}{% endblock %}
+{% block descricao_meta %}{{ material.descricao|truncatechars:160 }}{% endblock %}
+{% block conteudo %}
+<article class="materia">
+  <header class="materia__cabecalho">
+    <p class="selo"><a href="{{ material.categoria.get_absolute_url }}">{{ material.categoria.nome }}</a></p>
+    <h1>{{ material.titulo }}</h1>
+    <p class="materia__meta">
+      Por <strong>{{ material.artista.nome_artistico }}</strong> · {{ material.artista.cidade }}/{{ material.artista.uf }}
+      · Publicado em <time datetime="{{ material.publicado_em|date:'c' }}">{{ material.publicado_em|date:"j \d\e F \d\e Y" }}</time>
+    </p>
+  </header>
+  <figure class="materia__figura">
+    <img src="{% url 'portal:imagem' material.pk 'imagem' %}" alt="{{ material.texto_alternativo }}" width="{{ material.imagem_largura }}" height="{{ material.imagem_altura }}" fetchpriority="high">
+  </figure>
+  <div class="materia__texto">{{ material.descricao|linebreaks }}</div>
+  {% if material.link_obra or material.link_canal %}
+  <section class="materia__links" aria-labelledby="links-titulo">
+    <h2 id="links-titulo">Conheça mais</h2>
+    <ul>
+      {% if material.link_obra %}<li><a class="botao botao--primario" href="{% url 'portal:sair' material.pk 'obra' %}" rel="nofollow noopener">Acessar a obra <span class="visualmente-oculto">(site externo)</span><span aria-hidden="true"> ↗</span></a></li>{% endif %}
+      {% if material.link_canal %}<li><a class="botao botao--secundario" href="{% url 'portal:sair' material.pk 'canal' %}" rel="nofollow noopener">Canal do artista <span class="visualmente-oculto">(site externo)</span><span aria-hidden="true"> ↗</span></a></li>{% endif %}
+    </ul>
+  </section>
+  {% endif %}
+</article>
+{% endblock %}

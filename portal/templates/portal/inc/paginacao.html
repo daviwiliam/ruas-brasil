@@ -1,0 +1,7 @@
+{% if pagina.paginator.num_pages > 1 %}
+<nav class="paginacao" aria-label="Paginação">
+  {% if pagina.has_previous %}<a class="botao botao--secundario" rel="prev" href="?{% if termo %}q={{ termo|urlencode }}&amp;{% endif %}pagina={{ pagina.previous_page_number }}"><span aria-hidden="true">←</span> Anteriores</a>{% endif %}
+  <span class="paginacao__atual">Página {{ pagina.number }} de {{ pagina.paginator.num_pages }}</span>
+  {% if pagina.has_next %}<a class="botao botao--secundario" rel="next" href="?{% if termo %}q={{ termo|urlencode }}&amp;{% endif %}pagina={{ pagina.next_page_number }}">Próximas <span aria-hidden="true">→</span></a>{% endif %}
+</nav>
+{% endif %}

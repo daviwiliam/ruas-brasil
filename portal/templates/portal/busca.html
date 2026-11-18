@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block titulo %}{% if termo %}Busca: {{ termo }}{% else %}Pesquisar{% endif %}{% endblock %}
+{% block conteudo %}
+<section aria-labelledby="busca-titulo">
+  <h1 id="busca-titulo">Pesquisar publicações</h1>
+  <form class="form-busca" role="search" method="get" action="{% url 'portal:busca' %}">
+    <label for="busca-pagina">Título do trabalho ou nome artístico</label>
+    <div class="form-busca__linha">
+      <input id="busca-pagina" type="search" name="q" maxlength="100" value="{{ termo }}">
+      <button type="submit" class="botao botao--primario">Pesquisar</button>
+    </div>
+  </form>
+  {% if termo %}
+    <p role="status" class="resultado-busca">
+      {% with total=pagina.paginator.count %}{{ total }} resultado{{ total|pluralize }} para “{{ termo }}”.{% endwith %}
+    </p>
+    {% if pagina.object_list %}
+      <h2 class="visualmente-oculto">Resultados</h2>
+      <div class="cards">
+        {% for material in pagina.object_list %}{% include "portal/inc/card.html" with prioritaria=forloop.first %}{% endfor %}
+      </div>
+      {% include "portal/inc/paginacao.html" %}
+    {% endif %}
+  {% endif %}
+</section>
+{% endblock %}

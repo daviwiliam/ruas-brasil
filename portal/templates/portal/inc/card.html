@@ -1,0 +1,10 @@
+<article class="card">
+  <a class="card__link" href="{{ material.get_absolute_url }}">
+    <img class="card__img" src="{% url 'portal:imagem' material.pk 'miniatura' %}" alt="{{ material.texto_alternativo }}" width="640" height="480"{% if prioritaria %} fetchpriority="high"{% else %} loading="lazy"{% endif %} decoding="async">
+    <div class="card__corpo">
+      <p class="selo">{{ material.categoria.nome }}</p>
+      <h3 class="card__titulo">{{ material.titulo }}</h3>
+      <p class="card__artista">{{ material.artista.nome_artistico }} · {{ material.artista.cidade }}/{{ material.artista.uf }}</p>
+    </div>
+  </a>
+</article>
