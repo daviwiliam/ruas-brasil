@@ -1,0 +1,43 @@
+{
+  "inicio_1280": {
+    "largura_viewport": 1280,
+    "scroll_horizontal": false,
+    "alvos_menores_que_44px": []
+  },
+  "primeiro_tab": "Pular para o conteúdo",
+  "materia_1280": {
+    "largura_viewport": 1280,
+    "scroll_horizontal": false,
+    "alvos_menores_que_44px": []
+  },
+  "enviar_1280": {
+    "largura_viewport": 1280,
+    "scroll_horizontal": false,
+    "alvos_menores_que_44px": []
+  },
+  "foco_apos_erro": "resumo-erros",
+  "protocolo_capturado": "RB-DH7RT-LN3VY",
+  "mensagem_aprovacao": "✓ “Vozes do Bairro” foi aprovado e publicado.",
+  "publicado_visivel": true,
+  "apos_logout": "http://127.0.0.1:8765/painel/logout/",
+  "inicio_320": {
+    "largura_viewport": 320,
+    "scroll_horizontal": false,
+    "alvos_menores_que_44px": []
+  },
+  "envio_320": {
+    "largura_viewport": 320,
+    "scroll_horizontal": false,
+    "alvos_menores_que_44px": []
+  },
+  "inicio_640-zoom200": {
+    "largura_viewport": 640,
+    "scroll_horizontal": false,
+    "alvos_menores_que_44px": []
+  },
+  "envio_640-zoom200": {
+    "largura_viewport": 640,
+    "scroll_horizontal": false,
+    "alvos_menores_que_44px": []
+  }
+}
