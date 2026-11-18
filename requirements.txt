@@ -1,0 +1,9 @@
+# Dependências de execução (versões fixadas para builds reproduzíveis)
+Django==5.2.19
+psycopg[binary]==3.3.9
+pillow==12.3.0
+gunicorn==23.0.0
+# dependências transitivas
+asgiref==3.13.0
+sqlparse==0.6.1
+tzdata==2026.6
