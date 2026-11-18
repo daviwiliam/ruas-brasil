@@ -1,5 +1,7 @@
 # RUAS BRASIL
 
+[![CI](https://github.com/daviwiliam/ruas-brasil/actions/workflows/ci.yml/badge.svg)](https://github.com/daviwiliam/ruas-brasil/actions/workflows/ci.yml)
+
 Portal editorial de divulgação de artistas independentes de Piraquara e região
 (música, artes visuais, jogos, audiovisual, literatura e moda).
 
@@ -156,8 +158,8 @@ instala as dependências e executa `makemigrations --check`, `check`,
 | Python 3.13.7 + SQLite | 120 testes, todos passaram |
 
 As rodadas com 120 testes aconteceram antes da inclusão do teste de mensagem
-única de link. O workflow ainda **não rodou no GitHub**, porque o repositório
-não foi publicado.
+única de link. O resultado do CI no GitHub fica na aba
+[Actions](https://github.com/daviwiliam/ruas-brasil/actions) (badge no topo).
 
 ## Segurança e privacidade
 
@@ -282,6 +284,3 @@ segundo não foi medida.
   alvos com pelo menos 44 px, foco no resumo de erros) e pelos contrastes
   calculados no CSS. **Falta testar com leitor de tela e com pessoas usuárias.**
 - O LCP não foi medido; a validação com o parceiro não foi realizada.
-#   r u a s - b r a s i l  
- #   r u a s - b r a s i l  
- 
