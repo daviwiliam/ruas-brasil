@@ -115,7 +115,7 @@ else:
             "NAME": env("POSTGRES_DB", "ruas_brasil"),
             "USER": env("POSTGRES_USER", "ruas_brasil"),
             "PASSWORD": env("POSTGRES_PASSWORD", ""),
-            "HOST": env("POSTGRES_HOST", "localhost"),
+            "HOST": env("POSTGRES_HOST", "127.0.0.1"),
             "PORT": env("POSTGRES_PORT", "5432"),
             "CONN_MAX_AGE": int(env("POSTGRES_CONN_MAX_AGE", "60")),
         }
