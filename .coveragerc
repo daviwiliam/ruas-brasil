@@ -1,0 +1,11 @@
+[run]
+source = portal, config
+omit =
+    */migrations/*
+    */tests/*
+    config/asgi.py
+branch = True
+
+[report]
+show_missing = True
+skip_covered = False
